@@ -5,8 +5,8 @@ Aplikasi mobile berbasis Flutter untuk mencatat daftar tugas dan catatan harian 
 ---
 
 ## 📌 Identitas Peserta
-- **Nama:** [Masukkan Nama Lengkap Anda]
-- **NIM:** [Masukkan NIM Anda]
+- **Nama:** Adam Nugraha
+- **NIM:** 103012400280
 - **Platform:** Flutter (Dart)
 
 ---
@@ -45,8 +45,8 @@ Pastikan Flutter SDK telah terpasang di komputer Anda.
 
 1. **Clone Repositori ini:**
    ```bash
-   git clone https://github.com/[username-anda]/[nama-repo].git
-   cd [nama-repo]
+   git clone https://github.com/Adam-Nugraha225/Mobile-Dev-Mini_Task.git
+   cd Mobile-Dev-Mini_Task
    ```
 
 2. **Unduh Dependensi:**
