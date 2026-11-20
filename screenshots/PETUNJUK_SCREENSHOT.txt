@@ -1,4 +1,0 @@
-Simpan tangkapan layar (screenshot) aplikasi di folder ini dengan nama:
-1. screenshot_empty.png (Tampilan Empty State saat belum ada tugas)
-2. screenshot_list.png (Tampilan saat sudah ada daftar tugas)
-3. screenshot_action.png (Tampilan saat mencentang selesai atau dialog konfirmasi hapus)

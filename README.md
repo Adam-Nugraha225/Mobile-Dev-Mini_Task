@@ -31,9 +31,9 @@ Aplikasi mobile berbasis Flutter untuk mencatat daftar tugas dan catatan harian 
 
 ## Demo Aplikasi
 
-| Empty State | Daftar Catatan | Aksi Centang & Hapus |
-| :---: | :---: | :---: |
-| ![Empty State](screenshots/screenshot_empty.png) | ![List Tugas](screenshots/screenshot_list.png) | ![Aksi Hapus](screenshots/screenshot_action.png) |
+| Empty State | Daftar Catatan | Tugas Selesai | Konfirmasi Hapus |
+| :---: | :---: | :---: | :---: |
+| <img src="screenshots/screenshot_empty.png" width="200" alt="Empty State" /> | <img src="screenshots/screenshot_list.png" width="200" alt="Daftar Catatan" /> | <img src="screenshots/screenshot_finished-task.png" width="200" alt="Tugas Selesai" /> | <img src="screenshots/screenshot_deleted-task.png" width="200" alt="Konfirmasi Hapus" /> |
 
 ---
 
