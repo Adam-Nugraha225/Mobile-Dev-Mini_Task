@@ -1,5 +1,3 @@
-/// Model representasi data sebuah Catatan / Tugas harian.
-/// Dibuat terpisah agar kode mengikuti prinsip Clean Code dan OOP (Object-Oriented Programming).
 class Task {
   final String id;
   String title;
@@ -13,7 +11,6 @@ class Task {
     required this.createdAt,
   });
 
-  /// Method pembantu untuk mengubah status selesai / belum selesai.
   void toggleCompleted() {
     isCompleted = !isCompleted;
   }

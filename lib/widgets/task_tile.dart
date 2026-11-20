@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/task_model.dart';
 
-/// Widget kartu item tugas yang menampilkan judul, status centang, dan tombol hapus.
 class TaskTile extends StatelessWidget {
   final Task task;
   final VoidCallback onToggle;
@@ -14,7 +13,6 @@ class TaskTile extends StatelessWidget {
     required this.onDelete,
   });
 
-  /// Format jam dan menit sederhana tanpa perlu library eksternal
   String _formatTime(DateTime date) {
     final hour = date.hour.toString().padLeft(2, '0');
     final minute = date.minute.toString().padLeft(2, '0');
@@ -51,7 +49,6 @@ class TaskTile extends StatelessWidget {
       ),
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-        // 1. Aksi Centang (Checkbox)
         leading: Transform.scale(
           scale: 1.1,
           child: Checkbox(
@@ -63,7 +60,6 @@ class TaskTile extends StatelessWidget {
             onChanged: (_) => onToggle(),
           ),
         ),
-        // 2. Judul Catatan (dengan efek coret jika selesai)
         title: Text(
           task.title,
           style: theme.textTheme.bodyLarge?.copyWith(
@@ -74,29 +70,24 @@ class TaskTile extends StatelessWidget {
                 : theme.colorScheme.onSurface,
           ),
         ),
-        // Waktu pembuatan
         subtitle: Text(
           'Dibuat: ${_formatTime(task.createdAt)}',
           style: theme.textTheme.bodySmall?.copyWith(
             color: theme.colorScheme.onSurfaceVariant.withOpacity(0.7),
           ),
         ),
-        // 3. Tombol Hapus (dengan dialog konfirmasi)
         trailing: IconButton(
           tooltip: 'Hapus Tugas',
           icon: Icon(
             Icons.delete_outline_rounded,
             color: theme.colorScheme.error.withOpacity(0.8),
           ),
-          onPressed: () {
-            _showDeleteConfirmation(context);
-          },
+          onPressed: () => _showDeleteConfirmation(context),
         ),
       ),
     );
   }
 
-  /// Dialog konfirmasi untuk mencegah user tidak sengaja menghapus catatan
   void _showDeleteConfirmation(BuildContext context) {
     showDialog(
       context: context,

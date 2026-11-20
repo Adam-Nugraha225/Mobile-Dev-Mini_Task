@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Widget tampilan saat daftar catatan masih kosong.
-/// Memberikan pengalaman UX yang baik daripada hanya layar kosong.
 class EmptyStateWidget extends StatelessWidget {
   const EmptyStateWidget({super.key});
 

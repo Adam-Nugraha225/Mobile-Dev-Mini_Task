@@ -3,8 +3,6 @@ import '../models/task_model.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/task_tile.dart';
 
-/// Halaman utama (1 Halaman Sesuai Ketentuan Penugasan).
-/// Menggunakan StatefulWidget dan setState() untuk manajemen data lokal di memori.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -13,10 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // 1. In-Memory Data: List penampung objek tugas
   final List<Task> _tasks = [];
-
-  // Controller untuk menangani input dari TextField
   final TextEditingController _taskController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
 
@@ -27,16 +22,11 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  // Hitung jumlah tugas yang sudah selesai
   int get _completedCount => _tasks.where((task) => task.isCompleted).length;
 
-  // ================= LOGIKA UTAMA (CORE ACTIONS) =================
-
-  /// Logika 1: Menambah tugas baru ke dalam list
   void _addTask() {
     final title = _taskController.text.trim();
 
-    // Validasi: Tidak boleh kosong atau hanya spasi
     if (title.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -54,9 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
       createdAt: DateTime.now(),
     );
 
-    // setState memberitahu Flutter bahwa data berubah, picu render ulang tampilan
     setState(() {
-      _tasks.insert(0, newTask); // Masukkan di paling atas
+      _tasks.insert(0, newTask);
     });
 
     _taskController.clear();
@@ -71,7 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  /// Logika 2: Mengubah status centang (selesai / belum)
   void _toggleTask(String id) {
     setState(() {
       final task = _tasks.firstWhere((t) => t.id == id);
@@ -79,7 +67,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  /// Logika 3: Menghapus catatan dari daftar
   void _deleteTask(String id) {
     final index = _tasks.indexWhere((t) => t.id == id);
     if (index == -1) return;
@@ -90,7 +77,6 @@ class _HomeScreenState extends State<HomeScreen> {
       _tasks.removeAt(index);
     });
 
-    // UX Tambahan: Beri notifikasi SnackBar dengan tombol Undo
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -108,8 +94,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ================= TAMPILAN (UI) =================
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -122,7 +106,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: false,
         actions: [
-          // Indikator Progres Ringkas
           if (_tasks.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(right: 16.0),
@@ -152,12 +135,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // BAGIAN 1: FORM INPUT DATA
             _buildInputSection(theme),
-
             const Divider(height: 1),
-
-            // BAGIAN 2 & 3: TAMPILAN DAFTAR (LIST) & AKSI
             Expanded(
               child: _tasks.isEmpty
                   ? const EmptyStateWidget()
@@ -181,7 +160,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  /// Komponen input baris untuk memasukkan judul catatan dan tombol simpan
   Widget _buildInputSection(ThemeData theme) {
     return Container(
       padding: const EdgeInsets.all(16.0),
@@ -193,7 +171,6 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Row(
             children: [
-              // Kolom Teks Input Judul
               Expanded(
                 child: TextField(
                   controller: _taskController,
@@ -224,7 +201,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(width: 12),
-              // Tombol Simpan
               FilledButton.icon(
                 onPressed: _addTask,
                 icon: const Icon(Icons.add_rounded),

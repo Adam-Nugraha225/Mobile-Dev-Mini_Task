@@ -5,7 +5,6 @@ void main() {
   runApp(const MiniTaskTrackerApp());
 }
 
-/// Root widget aplikasi
 class MiniTaskTrackerApp extends StatelessWidget {
   const MiniTaskTrackerApp({super.key});
 
@@ -17,7 +16,7 @@ class MiniTaskTrackerApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF3F51B5), // Warna Indigo Modern
+          seedColor: const Color(0xFF3F51B5),
           brightness: Brightness.light,
         ),
         scaffoldBackgroundColor: const Color(0xFFF8F9FA),
